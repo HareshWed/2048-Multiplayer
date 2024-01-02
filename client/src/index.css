@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: #FBEAEB;
+}
+
+.player-tile-grid{
+  width: 40vw;
+}
+.opponent-tile-grid{
+  width: 40vw;
+  transform: scale(0.5);
+}
+
+.player-num-tile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  width: 8vw;
+  height: 8vw;
+}
+
+.game-over, .game-active, .game-win{
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-weight: bold;
+  font-size: 4em;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+  z-index: 2;
+}
+.game-over{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(180 , 70, 50, 0.4);
+}
+
+.game-win{
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(240 , 220, 50, 0.5);
+}
+
+.game-active{
+  display: none;
+}
+
+.expand-grow{
+  animation-name: expand;
+  animation-duration: 0.3s;
+  animation-direction: alternate;
+}
+
+.room-display{
+  display: inline-block;
+  padding: 0.5em 4em;
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-left: 10vw;
+  margin-top: 1vh;
+  color: white;
+}
+
+.animate-room{
+  animation-name: reveal;
+  animation-duration: 2s;
+}
+
+@keyframes expand{
+from{
+  transform: scale(1.0);
+}
+ to {
+  transform: scale(1.05);
+ } 
+}
+
+@keyframes reveal{
+  from{
+    padding: 0.5em 0;
+  }
+  to{
+    padding: 0.5em 4em;
+  }
+}
